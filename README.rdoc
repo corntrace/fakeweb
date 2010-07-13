@@ -79,8 +79,8 @@ The :body's value could be a path of a file which stores the body content.
   Net::HTTP.get(URI.parse("http://www.google.com/"))
   # => Full response, including headers
 
-The :response's value could alse be a path to a file which stores the entire response from the server. ERB template and
-regular expression match capture are supported too.
+The :response's value could also be a path of file which stores the entire response from the server. ERB template and
+regular expression matching capture are supported too.
 
 === Adding a custom status to the response
 
