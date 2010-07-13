@@ -56,10 +56,20 @@ more than one URI.
 
 And the match captures could be used in erb template.
 
-  FakeWeb.register_uri(:get, %r|http://example\.com/users/(\d+)\.json|, :body => %Q|{"id":<%=$1%>, "username":"user<%=$!%>"}|})
+  FakeWeb.register_uri(:get, %r|http://example\.com/users/(\d+)\.json|, :body => %Q|{"id":<%=$1%>, "username":"user<%=$!%>"}|)
 
   Net::HTTP.get(URI.parse("http://example.com/users/3.json"))
   => '{"id":3, "username":"user3"}'
+
+The :body's value could be a path of a file which stores the body content.
+
+  /path/to/body/content.text.erb:
+  Lorem ipsum dolor sit amet for user <%= $1%>
+
+  FakeWeb.register_uri(:get, %r|http://example\.com/users/(\d+)\.json|, :body => "/path/to/body/content.text.erb")
+
+  Net::HTTP.get(URI.parse("http://example.com/users/3.json"))
+  => "Lorem ipsum dolor sit amet for user 3"
 
 === Replaying a recorded response
 
