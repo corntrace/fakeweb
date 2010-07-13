@@ -35,7 +35,7 @@ module FakeWeb
         end
       end
 
-      next_responder.response(&block)
+      next_responder.response(uri, &block)
     end
 
 

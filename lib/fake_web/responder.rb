@@ -16,7 +16,7 @@ module FakeWeb
       end
     end
 
-    def response(&block)
+    def response(uri, &block)
       if has_baked_response?
         response = baked_response
       else
@@ -26,6 +26,10 @@ module FakeWeb
         headers_extracted_from_options.each { |name, value| response[name] = value }
       end
 
+			# Do the uri matching again in order to get match items
+			uri =~ self.uri
+			# Using erb binding to replace original body content
+			response.instance_variable_set(:@body, ERB.new(response.instance_variable_get(:@body)).result(binding))
       response.instance_variable_set(:@read, true)
       response.extend FakeWeb::Response
 
