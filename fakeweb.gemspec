@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{fakeweb}
-  s.version = "1.2.7"
+  s.name = %q{corntrace-fakeweb}
+  s.version = "1.2.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Chris Kampmeier", "Blaine Cook"]
-  s.date = %q{2009-11-02}
+  s.authors = ["Kevin Fu", "Chris Kampmeier", "Blaine Cook"]
+  s.date = %q{2010-07-13}
   s.description = %q{FakeWeb is a helper for faking web requests in Ruby. It works at a global level, without modifying code or writing extensive stubs.}
-  s.email = ["chris@kampers.net", "romeda@gmail.com"]
+  s.email = ["corntrace@gmail.com", "chris@kampers.net", "romeda@gmail.com"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
      "README.rdoc"
@@ -74,10 +74,9 @@ Gem::Specification.new do |s|
      "test/vendor/samuel-0.2.1/test/test_helper.rb",
      "test/vendor/samuel-0.2.1/test/thread_test.rb"
   ]
-  s.homepage = %q{http://github.com/chrisk/fakeweb}
+  s.homepage = %q{http://github.com/corntrace/fakeweb}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubyforge_project = %q{fakeweb}
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{A tool for faking responses to HTTP requests}
   s.test_files = [

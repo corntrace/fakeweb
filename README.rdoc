@@ -38,6 +38,14 @@ Start by requiring FakeWeb:
   Net::HTTP.get(URI.parse("http://example.com/test2"))
   => FakeWeb is bypassed and the response from a real request is returned
 
+=== Registering erb template responses
+
+  @somebody = "Kevin"
+	FakeWeb.register_uri(:get, "http://example.com/test1", :body => "Hello <%= @somebody%>!")
+
+	Net::HTTP.get(URI.parse("http://example.com/test1"))
+	=> "Hello Kevin!"
+
 You can also call <tt>register_uri</tt> with a regular expression, to match
 more than one URI.
 
@@ -45,6 +53,13 @@ more than one URI.
 
   Net::HTTP.get(URI.parse("http://example.com/test3"))
   => "Hello World!"
+
+And the match captures could be used in erb template.
+
+  FakeWeb.register_uri(:get, %r|http://example\.com/users/(\d+)\.json|, :body => %Q|{"id":<%=$1%>, "username":"user<%=$!%>"}|})
+
+	Net::HTTP.get(URI.parse("http://example.com/users/3.json"))
+	=> '{"id":3, "username":"user3"}'
 
 === Replaying a recorded response
 
